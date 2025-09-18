@@ -148,3 +148,4 @@ function addLog() {
 
   contLog.style.opacity = '1';
 }
+localStorage.clear();
