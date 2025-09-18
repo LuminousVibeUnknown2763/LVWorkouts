@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>LV Workouts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class='nav'>
+	 <a id='ah'href='#home'></a>
+    <a id='aw'href='#recWorkouts'></a>
+    <a id='al'href='#log'></a>
+    <a id='ar'href='#rank'></a>
+  </nav>
+
+  <section id='home'class='home'>
+    <div id='logo'class='logo'></div>
+    <h1>LV Workouts</h1>
+    <p>Let the muscles grow</p>
+  </section>
+
+  <section id='recWorkouts'class='reWo'>
+    <h1>Recomended Workouts</h1>
+      <div class='contWork'>
+        <button id='bicep'class='wbtn'></button>
+        <button id='tricep'class='wbtn'></button>
+        <button id='chest'class='wbtn'></button>
+        <button id='back'class='wbtn'></button>
+        <button id='shoulders'class='wbtn'></button>
+        <button id='abs-core'class='wbtn'></button>
+        <button id='forearm'class='wbtn'></button>
+        <button id='legs'class='wbtn'></button>
+        <button id='neck'class='wbtn'></button>
+      </div>
+  </section>
+
+  <section id='log'class='log'>
+    <form onsubmit='addLog(); return false;'>
+      <input id='set'type='number'placeholder='Sets...'type='number'required>
+      <input id='rep'placeholder='Reps...'type='number'required>
+      <input id='date'placeholder='Date...'type='date'required>
+      <button type='submit'class='sbtBtn'>Submit</button>
+    </form>
+    <div id='contLog'></div>
+  </section>
+
+  <section id='rank'class='rank'>
+    <div id='user'></div>
+    <div id='rankD'></div>
+    <div id='xp'></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
