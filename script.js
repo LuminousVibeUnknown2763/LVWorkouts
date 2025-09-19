@@ -94,6 +94,7 @@ nebtn.innerHTML = dumbbellIcon + 'Neck Stretch - Neck';
 const contLog = document.getElementById('contLog');
 const xpDisplay = document.getElementById('xp');
 const rankDisplay = document.getElementById('rankD');
+const textRem = document.getElementById('textRem');
 
 function getStoredXP() {
   return Number(localStorage.getItem('workoutXP') || 0);
@@ -120,32 +121,46 @@ window.addEventListener('load', () => {
   });
   updateXPAndRankDisplay();
   contLog.style.opacity = '1';
+   
+  const today = new Date()
+  const day = today.getDate();
+  if (day % 2 !== 0) {
+    textRem.textContent = 'Work the muscles';
+  } else {
+    textRem.textContent = 'Let the muscle grow';
+  }
 });
 
 function addLog() {
-  const setInput = Number(document.getElementById('set').value || 0);
-  const repInput = Number(document.getElementById('rep').value || 0);
-  const dateInput = document.getElementById('date').value || new Date().toISOString();
-  if (setInput <= 0 || repInput <= 0) {
-    alert('Please enter valid sets and reps (numbers > 0)');
-    return;
-  }
-  const newLog = { set: setInput, rep: repInput, date: dateInput };
-  const logs = JSON.parse(localStorage.getItem('TestLog') || '[]');
-  logs.push(newLog);
-  localStorage.setItem('workoutLog', JSON.stringify(logs));
-  const p = document.createElement('p');
-  p.textContent = `${dateInput.slice(0,10)} – ${setInput} x ${repInput}`;
-  p.style.color = 'white';
-  contLog.appendChild(p);
-  let xp = getStoredXP();
-  xp += repInput * setInput;
-  setStoredXP(xp);
-  updateXPAndRankDisplay();
-  document.getElementById('set').value = '';
-  document.getElementById('rep').value = '';
-  document.getElementById('date').value = '';
+  const today = new Date()
+  const day = today.getDate();
+  if (day % 2 === 0) {
+    const setInput = Number(document.getElementById('set').value || 0);
+    const repInput = Number(document.getElementById('rep').value || 0);
+    const dateInput = new Date().toISOString();
+    if (setInput <= 0 || repInput <= 0) {
+      alert('Please enter valid sets and reps (numbers > 0)');
+      return;
+    }
+    const newLog = { set: setInput, rep: repInput, date: dateInput };
+    const logs = JSON.parse(localStorage.getItem('workoutLog') || '[]');
+    logs.push(newLog);
+    localStorage.setItem('workoutLog', JSON.stringify(logs));
+    const p = document.createElement('p');
+    p.textContent = `${dateInput.slice(0,10)} – ${setInput} x ${repInput}`;
+    p.style.color = 'white';
+    contLog.appendChild(p);
+    let xp = getStoredXP();
+    xp += repInput * setInput;
+    alert(`You recieved ${repInput * setInput}`);
+    setStoredXP(xp);
+    updateXPAndRankDisplay();
+    document.getElementById('set').value = '';
+    document.getElementById('rep').value = '';
+    document.getElementById('date').value = '';
 
-  contLog.style.opacity = '1';
+    contLog.style.opacity = '1';
+  } else {
+    alert('Rest Day, No points added');
+  }
 }
-localStorage.clear();
