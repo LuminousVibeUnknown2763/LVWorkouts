@@ -124,7 +124,7 @@ window.addEventListener('load', () => {
    
   const today = new Date()
   const day = today.getDate();
-  if (day % 2 !== 0) {
+  if (day % 2 === 0) {
     textRem.textContent = 'Work the muscles';
   } else {
     textRem.textContent = 'Let the muscle grow';
