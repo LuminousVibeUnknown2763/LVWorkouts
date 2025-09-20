@@ -152,7 +152,7 @@ function addLog() {
     contLog.appendChild(p);
     let xp = getStoredXP();
     xp += repInput * setInput;
-    alert(`You recieved ${repInput * setInput}`);
+    alert(`You recieved ${repInput * setInput}xp`);
     setStoredXP(xp);
     updateXPAndRankDisplay();
     document.getElementById('set').value = '';
